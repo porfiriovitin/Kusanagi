@@ -1,10 +1,16 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Kusanagi.Domain.Repositories;
+using Kusanagi.Domain.Repositories.User;
+using Kusanagi.Domain.Security.PasswordHasher;
+using Kusanagi.Domain.Security.Tokens;
+using Kusanagi.Infrastructure.DataAcess;
+using Kusanagi.Infrastructure.DataAcess.Repositories;
+using Kusanagi.Infrastructure.Security.PasswordHashing;
+using Kusanagi.Infrastructure.Security.Tokens;
+using Kusanagi.Infrastructure.Security.Tokens.Acess;
+using Kusanagi.Infrastructure.Security.Tokens.Refresh;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Kusanagi.Infrastructure.DataAcess;
-using Kusanagi.Domain.Repositories;
-using Kusanagi.Domain.Repositories.User;
-using Kusanagi.Infrastructure.DataAcess.Repositories;
 
 namespace Kusanagi.Infrastructure;
 
@@ -14,6 +20,8 @@ public static class DependencyInjectionExtension
     {
         AddDbContext(services, configuration);
         AddRepositories(services);
+        AddSecurityHandler(services);
+        AddTokensHandler(services, configuration);
     }
 
     private static void AddDbContext(this IServiceCollection services, IConfiguration configuration)
@@ -34,5 +42,19 @@ public static class DependencyInjectionExtension
         services.AddScoped<IUserUpdateOnlyRepository, UserRepository>();
     }
 
+    private static void AddSecurityHandler(this IServiceCollection services)
+    {
+        services.AddScoped<IPasswordHasher, Argon2PasswordHasher>();
+    }
+
+    private static void AddTokensHandler(this IServiceCollection services, IConfiguration configuration)
+    {
+        var expirationTimeInMinutes = configuration.GetValue<uint>("Jwt:ExpirationTimeInMinutes");
+        var SigningKey = configuration.GetValue<string>("Jwt:SigningKey")!;
+
+        services.AddScoped<IAcessTokenGenerator>(provider => new JwtTokenHandler(expirationTimeInMinutes, SigningKey));
+        services.AddScoped<IRefreshTokenGenerator, RefreshTokenHandler>();
+
+    }
 
 }
