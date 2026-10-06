@@ -1,13 +1,11 @@
-﻿using Kusanagi.Infrastructure.DataAcess;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using DbContext = Kusanagi.Infrastructure.DataAcess.DbContext;
+using Kusanagi.Infrastructure.DataAcess;
 
 namespace Kusanagi.Infrastructure;
 
-public static class DependencyInjection
+public static class DependencyInjectionExtension
 {
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
@@ -16,7 +14,7 @@ public static class DependencyInjection
 
     private static void AddDbContext(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<DbContext>(options =>
+        services.AddDbContext<KusanagiDbContext>(options =>
         {
             var connectionString = configuration.GetConnectionString("DbConnection");
             options.UseNpgsql(connectionString);

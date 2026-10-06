@@ -5,9 +5,9 @@ using System.Runtime.CompilerServices;
 [assembly: InternalsVisibleTo("WebApi.Tests")]
 namespace Kusanagi.Infrastructure.DataAcess;
 
-public class DbContext : Microsoft.EntityFrameworkCore.DbContext
+public class KusanagiDbContext : Microsoft.EntityFrameworkCore.DbContext
 {
-    public DbContext(DbContextOptions<DbContext> options) : base(options){ }
+    public KusanagiDbContext(DbContextOptions<KusanagiDbContext> options) : base(options){ }
 
     public DbSet<User> Users { get; set; }
 
