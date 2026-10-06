@@ -1,1 +1,22 @@
-<Solution />
+<Solution>
+  <Folder Name="/src/">
+    <File Path=".env" />
+    <File Path=".gitignore" />
+    <File Path="AGENTS.md" />
+    <File Path="docker-compose.yaml" />
+    <File Path="example.env" />
+  </Folder>
+  <Folder Name="/src/Backend/">
+    <Project Path="src/Backend/Kusanagi.API/Kusanagi.API.csproj" />
+    <Project Path="src/Backend/Kusanagi.Application/Kusanagi.Application.csproj" />
+    <Project Path="src/Backend/Kusanagi.Domain/Kusanagi.Domain.csproj" />
+    <Project Path="src/Backend/Kusanagi.Infrastructure/Kusanagi.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/Shared/">
+    <Project Path="src/Shared/Kusanagi.Communication/Kusanagi.Communication.csproj" />
+    <Project Path="src/Shared/Kusanagi.Exception/Kusanagi.Exception.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/CommomTestsUtilities/CommomTestsUtilities.csproj" />
+  </Folder>
+</Solution>

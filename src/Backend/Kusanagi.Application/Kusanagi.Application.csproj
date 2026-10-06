@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Kusanagi.Communication\Kusanagi.Communication.csproj" />
+    <ProjectReference Include="..\Kusanagi.Domain\Kusanagi.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
