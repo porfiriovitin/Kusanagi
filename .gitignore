@@ -6,8 +6,8 @@
 # dotenv files
 .env
 
-src\Backend\Kusanagi.API\appsettings.json
-src\Backend\Kusanagi.API\appsettings.Development.json
+src/Backend/Kusanagi.API/appsettings.json
+src/Backend/Kusanagi.API/appsettings.Development.json
 
 .agents/
 
