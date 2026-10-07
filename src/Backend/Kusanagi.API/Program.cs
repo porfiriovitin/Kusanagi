@@ -69,6 +69,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
             context.Response.StatusCode = StatusCodes.Status401Unauthorized;
             context.Response.ContentType = "application/json";
 
+            var errorMessage = context.AuthenticateFailure switch
+            {
+                null => "Token necessário",
+                SecurityTokenExpiredException => "Token expirado",
+                _ => "Acesso negado"
+            };
+
             var response = new PayloadResponse
             {
                 Status = nameof(ResponseStatus.Error),
