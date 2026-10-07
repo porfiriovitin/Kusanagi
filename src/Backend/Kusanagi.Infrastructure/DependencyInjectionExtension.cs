@@ -1,12 +1,12 @@
-﻿using Kusanagi.Domain.Repositories;
+using Kusanagi.Domain.Repositories;
 using Kusanagi.Domain.Repositories.User;
 using Kusanagi.Domain.Security.PasswordHasher;
 using Kusanagi.Domain.Security.Tokens;
-using Kusanagi.Infrastructure.DataAcess;
-using Kusanagi.Infrastructure.DataAcess.Repositories;
+using Kusanagi.Infrastructure.DataAccess;
+using Kusanagi.Infrastructure.DataAccess.Repositories;
 using Kusanagi.Infrastructure.Security.PasswordHashing;
 using Kusanagi.Infrastructure.Security.Tokens;
-using Kusanagi.Infrastructure.Security.Tokens.Acess;
+using Kusanagi.Infrastructure.Security.Tokens.Access;
 using Kusanagi.Infrastructure.Security.Tokens.Refresh;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -52,7 +52,7 @@ public static class DependencyInjectionExtension
         var expirationTimeInMinutes = configuration.GetValue<uint>("Jwt:ExpirationTimeInMinutes");
         var SigningKey = configuration.GetValue<string>("Jwt:SigningKey")!;
 
-        services.AddScoped<IAcessTokenGenerator>(provider => new JwtTokenHandler(expirationTimeInMinutes, SigningKey));
+        services.AddScoped<IAccessTokenGenerator>(provider => new JwtTokenHandler(expirationTimeInMinutes, SigningKey));
         services.AddScoped<IRefreshTokenGenerator, RefreshTokenHandler>();
 
     }

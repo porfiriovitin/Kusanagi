@@ -17,6 +17,6 @@
     <Project Path="src/Shared/Kusanagi.Exception/Kusanagi.Exception.csproj" />
   </Folder>
   <Folder Name="/tests/">
-    <Project Path="tests/CommomTestsUtilities/CommomTestsUtilities.csproj" />
+    <Project Path="tests/CommonTestsUtilities/CommonTestsUtilities.csproj" />
   </Folder>
 </Solution>

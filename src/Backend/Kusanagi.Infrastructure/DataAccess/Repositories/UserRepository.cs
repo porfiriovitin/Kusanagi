@@ -1,8 +1,8 @@
-﻿using Kusanagi.Domain.Entities;
+using Kusanagi.Domain.Entities;
 using Kusanagi.Domain.Repositories.User;
 using Microsoft.EntityFrameworkCore;
 
-namespace Kusanagi.Infrastructure.DataAcess.Repositories;
+namespace Kusanagi.Infrastructure.DataAccess.Repositories;
 
 public class UserRepository : IUserReadOnlyRepository, IUserWriteOnlyRepository, IUserUpdateOnlyRepository
 {
@@ -23,5 +23,5 @@ public class UserRepository : IUserReadOnlyRepository, IUserWriteOnlyRepository,
 
     public async Task<User?> GetById(Guid id) => await _dbContext.Users.FirstOrDefaultAsync(user => user.Id == id && user.Active);
 
-    public async Task UpdatePassword(Guid userId, string newPassword) => await _dbContext.Users.Where(user => user.Id == userId).ExecuteUpdateAsync(setter => setter.SetProperty(user => user.Password, newPassword));
+    public async Task UpdatePassword(Guid userId, string newPasswordHash) => await _dbContext.Users.Where(user => user.Id == userId).ExecuteUpdateAsync(setter => setter.SetProperty(user => user.PasswordHash, newPasswordHash));
 }

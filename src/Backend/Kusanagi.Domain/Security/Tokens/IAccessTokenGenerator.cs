@@ -1,8 +1,8 @@
-﻿using Kusanagi.Domain.Entities;
+using Kusanagi.Domain.Entities;
 
 namespace Kusanagi.Domain.Security.Tokens;
 
-public interface IAcessTokenGenerator
+public interface IAccessTokenGenerator
 {
     string Generate(User user);
 }

@@ -18,7 +18,7 @@ namespace Kusanagi.Infrastructure.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
                     Email = table.Column<string>(type: "text", nullable: false),
-                    Password = table.Column<string>(type: "text", nullable: false),
+                    PasswordHash = table.Column<string>(type: "text", nullable: false),
                     IsAdmin = table.Column<bool>(type: "boolean", nullable: false),
                     IsEmailVerified = table.Column<bool>(type: "boolean", nullable: false),
                     IsCellphoneVerified = table.Column<bool>(type: "boolean", nullable: false),
@@ -34,8 +34,8 @@ namespace Kusanagi.Infrastructure.Migrations
                 name: "IX_Users_Email",
                 table: "Users",
                 column: "Email",
-                unique: true);
-           
+                unique: true,
+                filter: "\"Active\" = true");
         }
 
         /// <inheritdoc />

@@ -1,13 +1,13 @@
-﻿using Kusanagi.Domain.Entities;
+using Kusanagi.Domain.Entities;
 using Kusanagi.Domain.Security.Tokens;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.Text;
 
-namespace Kusanagi.Infrastructure.Security.Tokens.Acess;
+namespace Kusanagi.Infrastructure.Security.Tokens.Access;
 
-internal sealed class JwtTokenHandler : IAcessTokenGenerator
+internal sealed class JwtTokenHandler : IAccessTokenGenerator
 {
     private readonly uint _expirationTimeMinutes;
     private readonly string _signingKey;

@@ -1,4 +1,4 @@
-﻿namespace Kusanagi.Communication.Responses;
+namespace Kusanagi.Communication.Requests;
 
 public class RequestRegisterAccount
 {

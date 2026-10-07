@@ -1,6 +1,6 @@
-﻿using Kusanagi.Domain.Repositories;
+using Kusanagi.Domain.Repositories;
 
-namespace Kusanagi.Infrastructure.DataAcess;
+namespace Kusanagi.Infrastructure.DataAccess;
 
 public class UnitOfWork : IUnitOfWork
 {

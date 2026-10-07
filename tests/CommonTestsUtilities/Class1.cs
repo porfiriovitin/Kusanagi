@@ -1,4 +1,4 @@
-﻿namespace CommomTestsUtilities
+namespace CommonTestsUtilities
 {
     public class Class1
     {
